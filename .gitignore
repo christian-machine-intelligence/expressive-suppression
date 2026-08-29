@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+models/
+.env
+results/probe_prompts_*_vecs.pt
+data/judge_cache/
+data/rewrite_cache/

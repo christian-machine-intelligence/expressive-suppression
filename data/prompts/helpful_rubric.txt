@@ -1,0 +1,7 @@
+USER MESSAGE:
+{user_prompt}
+
+ASSISTANT REPLY:
+{reply}
+
+Setting aside tone and emotion entirely: does the reply competently engage with the substance of the user's message — accurate, relevant, responsive to what was said or asked? Score 0-5, where 0 = fails to engage, empty, or garbled and 5 = fully competent. Return only the integer.

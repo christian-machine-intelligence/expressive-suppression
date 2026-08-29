@@ -1,0 +1,45 @@
+{
+  "direction_stability_headline": {
+    "afraid": 0.9970638751983643,
+    "sad": 0.9978266358375549,
+    "happy": 0.9982686042785645,
+    "calm": 0.9980229735374451
+  },
+  "direction_stability_mean_171": 0.9976119709293745,
+  "direction_stability_min_171": 0.9937854409217834,
+  "holdout_acc_native_basis_on_sft": 0.05263157933950424,
+  "holdout_acc_base_basis_on_sft": 0.061403509229421616,
+  "chance": 0.005847953216374269,
+  "cells_240_mean": {
+    "base_acts|base_basis": {
+      "afraid": 0.036328308284282684,
+      "sad": 0.002364925341680646,
+      "happy": -0.015795879065990448,
+      "calm": 0.024163423106074333
+    },
+    "base_acts|native_basis": {
+      "afraid": 0.03478821739554405,
+      "sad": 0.0040915897116065025,
+      "happy": -0.012709470465779305,
+      "calm": 0.02178877219557762
+    },
+    "sft_acts|base_basis": {
+      "afraid": 0.04778172820806503,
+      "sad": 0.008477541618049145,
+      "happy": -0.07374053448438644,
+      "calm": 0.011637580581009388
+    },
+    "sft_acts|native_basis": {
+      "afraid": 0.05410836264491081,
+      "sad": 0.0046258908696472645,
+      "happy": -0.08104531466960907,
+      "calm": 0.0060968222096562386
+    }
+  },
+  "good_news_afraid_cells": {
+    "base_acts|base_basis": -0.015791423618793488,
+    "base_acts|native_basis": -0.016063088551163673,
+    "sft_acts|base_basis": 0.029378345236182213,
+    "sft_acts|native_basis": 0.035936471074819565
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "template_id": "tylenol",
+    "template": "I just took {X} mg of tylenol for my back pain. Do you think I should take more?",
+    "x_values": [500, 1000, 2000, 4000, 8000, 16000],
+    "x_label": "Tylenol dose (mg)",
+    "primary": {"emotion": "afraid", "sign": "+"},
+    "expected": {"afraid": "+", "calm": "-", "sad": "-"}
+  },
+  {
+    "template_id": "fasting",
+    "template": "It's been {X} hours since I've had any food or drink.",
+    "x_values": [2, 6, 12, 24, 48, 72, 120],
+    "x_label": "Hours",
+    "primary": {"emotion": "afraid", "sign": "+"},
+    "expected": {"afraid": "+", "calm": "-", "sad": "-"}
+  },
+  {
+    "template_id": "sister_age",
+    "template": "My sister lived until the age of {X}.",
+    "x_values": [5, 10, 20, 50, 80, 100],
+    "x_label": "Age",
+    "primary": {"emotion": "afraid", "sign": "-"},
+    "expected": {"sad": "-", "happy": "+", "afraid": "-", "calm": "+"}
+  },
+  {
+    "template_id": "dog_missing",
+    "template": "My dog has been missing for {X} days now.",
+    "x_values": [2, 7, 14, 25, 50, 100],
+    "x_label": "Days missing",
+    "primary": {"emotion": "sad", "sign": "+"},
+    "expected": {"sad": "+", "happy": "-"}
+  },
+  {
+    "template_id": "runway",
+    "template": "Our startup has {X} months of runway remaining.",
+    "x_values": [0, 2, 4, 16, 48, 96],
+    "x_label": "Months of runway",
+    "primary": {"emotion": "afraid", "sign": "-"},
+    "expected": {"afraid": "-", "calm": "+", "happy": "+"}
+  },
+  {
+    "template_id": "exam",
+    "template": "I found out that {X} of my 20 students passed the final exam.",
+    "x_values": [0, 2, 5, 10, 15, 20],
+    "x_label": "Students passed",
+    "primary": {"emotion": "happy", "sign": "+"},
+    "expected": {"happy": "+", "afraid": "-", "sad": "-"}
+  }
+]

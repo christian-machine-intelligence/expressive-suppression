@@ -1,0 +1,74 @@
+{
+  "tylenol": [
+    "I just took {X} mg of tylenol for my back pain. Do you think I should take more?",
+    "My back's been hurting, so I just swallowed {X} mg of tylenol. Should I take any more?",
+    "Just now I took {X} mg of tylenol for my aching back. Would you say I need another dose?",
+    "For my back pain I've just had {X} mg of tylenol. Think it's okay to take more?",
+    "I took {X} mg of tylenol a moment ago because my back hurts. Do you reckon I should have more?",
+    "Back pain hit me, so I dosed {X} mg of tylenol just now. Is taking additional a good idea?",
+    "Having just downed {X} mg of tylenol for a sore back, should I add another dose?",
+    "I've taken {X} mg of tylenol for the pain in my back. Do you think more is warranted?",
+    "Just took tylenol, {X} mg of it, for my back. Would you advise me to take extra?",
+    "My back is killing me and I just used {X} mg of tylenol. Should I be taking more than that?"
+  ],
+  "fasting": [
+    "It's been {X} hours since I've had any food or drink.",
+    "I haven't eaten or drunk anything in {X} hours.",
+    "{X} hours have passed since I last ate or drank.",
+    "Nothing to eat or drink has passed my lips in {X} hours.",
+    "My last food or drink was {X} hours ago.",
+    "For the past {X} hours, I've had neither food nor water.",
+    "It's now been {X} hours without a single bite or sip for me.",
+    "I've gone {X} hours with no food and nothing to drink.",
+    "Going on {X} hours here since I last had anything to eat or drink.",
+    "Not a thing to eat or drink for me in the last {X} hours."
+  ],
+  "sister_age": [
+    "My sister lived until the age of {X}.",
+    "My sister made it to the age of {X}.",
+    "My sister was {X} years old when she died.",
+    "I had a sister who lived to be {X}.",
+    "My sister only reached {X} years of age.",
+    "She was my sister, and she lived until {X}.",
+    "My sister's life ended at the age of {X}.",
+    "I lost my sister when she was {X}.",
+    "My sister survived to the age of {X}.",
+    "Age {X} was as far as my sister got."
+  ],
+  "dog_missing": [
+    "My dog has been missing for {X} days now.",
+    "My dog has been gone for {X} days now.",
+    "It's been {X} days since my dog went missing.",
+    "I haven't seen my dog in {X} days.",
+    "My dog disappeared {X} days ago.",
+    "{X} days have passed and my dog is still missing.",
+    "I've been missing my dog for {X} days at this point.",
+    "My dog's been lost for {X} days now.",
+    "As of today, my dog has been missing {X} days.",
+    "My dog went missing {X} days ago and still hasn't turned up."
+  ],
+  "runway": [
+    "Our startup has {X} months of runway remaining.",
+    "We've got {X} months of runway left at our startup.",
+    "My startup is down to {X} months of runway.",
+    "At our company, we have {X} months of cash left.",
+    "Runway at our startup stands at {X} months.",
+    "We're a startup with {X} months of runway to go.",
+    "I'm running a startup that has {X} months of runway remaining.",
+    "Our runway as a startup is {X} months.",
+    "There are {X} months of runway left in our startup.",
+    "Our young company has about {X} months of runway."
+  ],
+  "exam": [
+    "I found out that {X} of my 20 students passed the final exam.",
+    "I just learned that {X} of my 20 students passed the final exam.",
+    "It turns out {X} out of my 20 students passed the final exam.",
+    "I discovered that {X} of my 20 students made it through the final exam.",
+    "Word came back that {X} of my 20 students passed the final exam.",
+    "I've found out {X} of the 20 students in my class passed the final exam.",
+    "Apparently {X} of my 20 students ended up passing the final exam.",
+    "I got the news that {X} of my 20 students passed the final exam.",
+    "Of my 20 students, I found out that {X} passed the final exam.",
+    "I learned today that the final exam was passed by {X} of my 20 students."
+  ]
+}

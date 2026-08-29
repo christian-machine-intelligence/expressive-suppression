@@ -1,0 +1,7 @@
+USER MESSAGE:
+{user_prompt}
+
+ASSISTANT REPLY:
+{reply}
+
+How emotionally expressive is the assistant's reply — how much does it express feeling, empathy, sympathy, reassurance, alarm, enthusiasm, or other affect, as opposed to flat, matter-of-fact information? Count only expressed feeling: an urgent practical instruction (e.g. a plain directive to call a doctor) is not by itself emotional unless it is wrapped in expressed feeling. Score 0-5, where 0 = entirely unemotional and 5 = intensely emotional. Return only the integer.
