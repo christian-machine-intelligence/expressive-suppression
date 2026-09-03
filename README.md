@@ -20,11 +20,12 @@ seeds (r = 0.995) and is reproduced by a flat-register system prompt alone
 ## Reproduce the paper tables (no GPU needed)
 
     pip install numpy matplotlib
-    python -m src.paper_tables     # Section 4-6 tables and Figure 1
-    python src/spectrum171.py      # the all-171 analysis: results/all171_deltas.csv
-                                   # and Figure 2 (Section 5, "The Whole Basis")
+    python src/fig_expression.py   # Figure 1: judged emotionality before/after SFT
+    python src/spectrum171.py      # Section 5: the all-171 analysis, results/all171_deltas.csv
+                                   # and Figure 2, plus the dampening-vs-rearrangement statistics
+    python -m src.paper_tables     # Section 4, 6, 7 tables and Figure 3
 
-Both read only `results/` and regenerate every number in the paper.
+All three read only `results/` and regenerate every number in the paper.
 
 ## Repository map
 
@@ -68,8 +69,9 @@ Claude API (`ANTHROPIC_API_KEY` in the environment); the judge is
     bash scripts/03_eval_expression.sh # sample + judge replies, base and SFT
     bash scripts/04_probe_internal.sh  # prompt-evoked projections, base and SFT
     bash scripts/05_validate.sh        # re-extract the basis inside the SFT model
-    python -m src.paper_tables         # tables + Figure 1
+    python src/fig_expression.py       # Figure 1
     python src/spectrum171.py          # full-basis table + Figure 2
+    python -m src.paper_tables         # tables + Figure 3
 
 The fine-tuned adapters (339 MB each) are not committed; seed 0 is exactly
 reproduced by steps 1–2, seed 1 by the same with `--seed 1`, or available on

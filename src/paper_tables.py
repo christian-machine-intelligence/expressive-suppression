@@ -1,4 +1,4 @@
-"""Reproduce the paper's tables and Figure 1 from the shipped results.
+"""Reproduce the paper's tables and Figure 3 (the four-emotion category panels) from the shipped results.
 
     python -m src.paper_tables
 

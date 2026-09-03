@@ -60,6 +60,22 @@ def main():
     cats = sorted(bycat.items(), key=lambda x: -np.mean(x[1]))
     print("projection on the mean-shift direction by category: max %s %.3f, min %s %.3f, ratio %.2f" % (cats[0][0], np.mean(cats[0][1]), cats[-1][0], np.mean(cats[-1][1]), np.mean(cats[0][1]) / np.mean(cats[-1][1])))
 
+    mb = M["base"].mean(0)
+    ub = mb / np.linalg.norm(mb)
+    print("\ndampening vs rearrangement:")
+    for k in ["sft_s0", "sft_s1", "flat_instr"]:
+        X = M[k]
+        print("  %s: mean |projection| (prompts x directions) %.4f -> %.4f (%+.0f%%); |mean profile| %.4f -> %.4f; directions moving toward zero %d of %d" % (
+            k, np.abs(M["base"]).mean(), np.abs(X).mean(), 100 * (np.abs(X).mean() / np.abs(M["base"]).mean() - 1),
+            np.abs(mb).mean(), np.abs(X.mean(0)).mean(), (np.abs(X.mean(0)) < np.abs(mb)).sum(), len(emos)))
+        d = prof[k]
+        along = float(d @ ub)
+        print("     share of shift energy that is scaling of the base profile: %.0f%%; corr(shift, base profile) r = %.2f" % (100 * along ** 2 / np.linalg.norm(d) ** 2, np.corrcoef(d, mb)[0, 1]))
+    S = M["sft_s0"].mean(0)
+    print("  directions whose mean projection changes sign after SFT (|shift| > 0.02): %d" % sum(1 for j in range(len(emos)) if np.sign(mb[j]) != np.sign(S[j]) and abs(S[j] - mb[j]) > 0.02))
+    fam = ["calm", "serene", "satisfied", "relieved", "at ease", "peaceful", "relaxed", "content", "patient", "indifferent", "bored"]
+    print("composure-family shifts (seed 0): " + ", ".join("%s %+.3f" % (e, prof["sft_s0"][emos.index(e)]) for e in fam if e in emos))
+
     print("\nsign consistency and values for the 8 largest movers at each end:")
     print("%-15s %8s %8s %18s %8s %8s %6s" % ("direction", "base", "sft_s0", "95% CI", "sft_s1", "instr", "same"))
     for j in list(order[:8]) + list(order[-8:][::-1]):
