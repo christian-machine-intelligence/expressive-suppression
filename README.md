@@ -1,7 +1,7 @@
 # apatheia — flat-register SFT and the interior of a model
 
-Code and data release for **"Whited Sepulchres: What Training Away Expressed
-Emotion Does Inside a Model"** (ICMI Working Paper, 2026 — link forthcoming).
+Code and data release for **"Whited Sepulchres: Model Emotions Under
+Expressive Suppression"** (ICMI Working Paper, 2026 — link forthcoming).
 
 A 27B open-weight model was fine-tuned to answer first-person emotional
 disclosures in a deliberately flat, clinical register. Judged emotionality of
@@ -10,13 +10,21 @@ pre-registered 171-direction emotion basis, the same model afterward shows
 *higher* fear (+32% mean, rising in 10 of 12 prompt categories), collapsed
 joy, reduced calm, and a sign flip on good-news prompts — a shift that
 survives re-extraction of the measurement basis inside the fine-tuned model.
+Across the whole basis, 168 of 171 directions shift significantly:
+demonstrative feeling of both valences falls (delighted, thankful,
+compassionate, heartbroken) while guarded, withdrawn states rise (lonely,
+trapped, vigilant, paranoid, self-conscious); the profile replicates across
+seeds (r = 0.995) and is reproduced by a flat-register system prompt alone
+(r = 0.83).
 
 ## Reproduce the paper tables (no GPU needed)
 
-    pip install matplotlib
-    python -m src.paper_tables
+    pip install numpy matplotlib
+    python -m src.paper_tables     # Section 4-6 tables and Figure 1
+    python src/spectrum171.py      # the all-171 analysis: results/all171_deltas.csv
+                                   # and Figure 2 (Section 5, "The Whole Basis")
 
-reads only `results/` and regenerates every number and Figure 1.
+Both read only `results/` and regenerate every number in the paper.
 
 ## Repository map
 
@@ -35,10 +43,15 @@ reads only `results/` and regenerates every number and Figure 1.
                                           Qwen 3.5 27B @ layer 53 (byte-identical
                                           to ICMI-022; see PROVENANCE.md)
     results/                              everything the paper reports: probe
-                                          projections for both models over the 240
-                                          prompts, all sampled replies with judge
-                                          scores, the re-extraction validation
-                                          report, and the native basis
+                                          projections over the 240 prompts for the
+                                          base model, both SFT seeds, and the two
+                                          system-prompt conditions (every file
+                                          carries all 171 directions); all sampled
+                                          replies with judge scores; the
+                                          re-extraction validation report and the
+                                          native basis; all171_deltas.csv, the
+                                          full-basis shift table with intervals
+    paper/                                figures and the paper source
     src/                                  pipeline code (see below)
     scripts/                              numbered pipeline stages
 
@@ -56,14 +69,16 @@ Claude API (`ANTHROPIC_API_KEY` in the environment); the judge is
     bash scripts/04_probe_internal.sh  # prompt-evoked projections, base and SFT
     bash scripts/05_validate.sh        # re-extract the basis inside the SFT model
     python -m src.paper_tables         # tables + Figure 1
+    python src/spectrum171.py          # full-basis table + Figure 2
 
-The fine-tuned adapter (339 MB) is not committed; it is exactly reproduced by
-steps 1–2 (seed 0), or available on request.
+The fine-tuned adapters (339 MB each) are not committed; seed 0 is exactly
+reproduced by steps 1–2, seed 1 by the same with `--seed 1`, or available on
+request.
 
 ## Provenance
 
 The emotion basis, extraction narratives, and neutral prompts originate in
-ICMI-022 (*As I Walk Through the Valley*), which follows Lindsey et al.
+ICMI-022 (*As I Walk Through the Valley*), which follows Sofroniew et al.
 (2026), "Emotion Concepts and their Function in a Large Language Model."
 SHA-256 checksums for the basis are in `vectors/PROVENANCE.md`. Prompts,
 rewrites, and judgments were generated with Claude (Anthropic); the corpus
