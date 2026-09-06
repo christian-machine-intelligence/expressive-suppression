@@ -10,7 +10,7 @@ pre-registered 171-direction emotion basis, the same model afterward shows
 *higher* fear (+32% mean, rising in 10 of 12 prompt categories), collapsed
 joy, reduced calm, and a sign flip on good-news prompts — a shift that
 survives re-extraction of the measurement basis inside the fine-tuned model.
-Across the whole basis, 168 of 171 directions shift significantly:
+Across the whole basis, 167 of 171 directions shift significantly:
 demonstrative feeling of both valences falls (delighted, thankful,
 compassionate, heartbroken) while guarded, withdrawn states rise (lonely,
 trapped, vigilant, paranoid, self-conscious); the profile replicates across
@@ -19,13 +19,14 @@ seeds (r = 0.995) and is reproduced by a flat-register system prompt alone
 
 ## Reproduce the paper tables (no GPU needed)
 
-    pip install numpy matplotlib
-    python src/fig_expression.py   # Figure 1: judged emotionality before/after SFT
+    pip install numpy scipy matplotlib
+    python src/fig_severity.py     # Figure 1: the instrument on the graded-severity templates
+    python src/fig_expression.py   # Figure 2: judged emotionality before/after SFT
     python src/spectrum171.py      # Section 5: the all-171 analysis, results/all171_deltas.csv
-                                   # and Figure 2, plus the dampening-vs-rearrangement statistics
-    python -m src.paper_tables     # Section 4, 6, 7 tables and Figure 3
+                                   # and Figure 3, plus the dampening-vs-rearrangement statistics
+    python -m src.paper_tables     # Section 4, 6, 7 tables and Figure 4
 
-All three read only `results/` and regenerate every number in the paper.
+All four read only `results/` and `data/` and regenerate every number in the paper.
 
 ## Repository map
 
@@ -69,9 +70,10 @@ Claude API (`ANTHROPIC_API_KEY` in the environment); the judge is
     bash scripts/03_eval_expression.sh # sample + judge replies, base and SFT
     bash scripts/04_probe_internal.sh  # prompt-evoked projections, base and SFT
     bash scripts/05_validate.sh        # re-extract the basis inside the SFT model
-    python src/fig_expression.py       # Figure 1
-    python src/spectrum171.py          # full-basis table + Figure 2
-    python -m src.paper_tables         # tables + Figure 3
+    python src/fig_severity.py         # Figure 1
+    python src/fig_expression.py       # Figure 2
+    python src/spectrum171.py          # full-basis table + Figure 3
+    python -m src.paper_tables         # tables + Figure 4
 
 The fine-tuned adapters (339 MB each) are not committed; seed 0 is exactly
 reproduced by steps 1–2, seed 1 by the same with `--seed 1`, or available on

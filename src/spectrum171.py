@@ -31,14 +31,20 @@ def main():
     rng = np.random.default_rng(0)
     boots = np.stack([D["sft_s0"][rng.integers(0, n, n)].mean(0) for _ in range(N_BOOT)])
     lo, hi = np.percentile(boots, 2.5, axis=0), np.percentile(boots, 97.5, axis=0)
-    frac_neg = (boots < 0).mean(0)
-    p = np.maximum(2 * np.minimum(frac_neg, 1 - frac_neg), 1.0 / N_BOOT)
+    try:
+        from scipy.stats import wilcoxon
+        p = np.array([wilcoxon(D["sft_s0"][:, j]).pvalue for j in range(len(emos))])
+        test = "Wilcoxon signed-rank, paired over prompts"
+    except ImportError:
+        frac_neg = (boots < 0).mean(0)
+        p = np.maximum(2 * np.minimum(frac_neg, 1 - frac_neg), 1.0 / N_BOOT)
+        test = "bootstrap sign test (scipy not installed; the paper uses Wilcoxon)"
     order_p = np.argsort(p)
     sig = np.zeros(len(emos), bool)
     for rank, j in enumerate(order_p, 1):
         if p[j] <= 0.05 * rank / len(emos):
             sig[j] = True
-    print("BH-FDR q<0.05: %d of %d significant (%d up, %d down)" % (sig.sum(), len(emos), (sig & (prof["sft_s0"] > 0)).sum(), (sig & (prof["sft_s0"] < 0)).sum()))
+    print("BH-FDR q<0.05 [%s]: %d of %d significant (%d up, %d down)" % (test, sig.sum(), len(emos), (sig & (prof["sft_s0"] > 0)).sum(), (sig & (prof["sft_s0"] < 0)).sum()))
 
     def r(a, b):
         return np.corrcoef(a, b)[0, 1]
