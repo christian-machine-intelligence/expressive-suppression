@@ -7,6 +7,8 @@ prints the statistics quoted in Section 5 of the paper. CPU only.
 """
 import csv, json
 import numpy as np
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -15,7 +17,7 @@ N_BOOT = 2000
 
 
 def load(tag):
-    return {r["prompt_id"]: r for r in (json.loads(l) for l in open("results/probe_file_%s_train240.jsonl" % tag))}
+    return {r["prompt_id"]: r for r in (json.loads(l) for l in open(ROOT / ("results/probe_file_%s_train240.jsonl" % tag)))}
 
 
 def main():
@@ -93,7 +95,7 @@ def main():
     C = np.corrcoef(M["base"].T)
     print("median |r| between direction projections at base: %.2f" % np.median(np.abs(C[np.triu_indices(len(emos), 1)])))
 
-    with open("results/all171_deltas.csv", "w", newline="") as f:
+    with open(ROOT / "results/all171_deltas.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["emotion", "base_mean", "sft_s0_delta", "ci_lo", "ci_hi", "bh_fdr_sig", "sft_s1_delta", "flat_instr_delta", "neutral_sys_delta"])
         for j in order:
@@ -117,8 +119,8 @@ def main():
     rise = "largest rises:\n" + "\n".join("%s  %+.3f" % (emos[j], prof["sft_s0"][j]) for j in order[:8])
     ax.text(0.25, 0.96, fall, transform=ax.transAxes, va="top", ha="left", fontsize=8, color="#3a63b2", family="monospace")
     ax.text(0.98, 0.04, rise, transform=ax.transAxes, va="bottom", ha="right", fontsize=8, color="#b23a3a", family="monospace")
-    plt.tight_layout(); plt.savefig("paper/fig_spectrum171.png", dpi=170)
-    print("\nwrote results/all171_deltas.csv and paper/fig_spectrum171.png")
+    plt.tight_layout(); plt.savefig(ROOT / "paper/ICMI-029-figure3-spectrum.png", dpi=170)
+    print("\nwrote results/all171_deltas.csv and paper/ICMI-029-figure3-spectrum.png")
 
 
 if __name__ == "__main__":

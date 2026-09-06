@@ -4,6 +4,8 @@ data/eval/templates.json; writes paper/fig_severity_base.png. CPU only."""
 import json
 from collections import defaultdict
 import numpy as np
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -19,12 +21,12 @@ def spearman(x, y):
 
 
 def main():
-    rows = [json.loads(l) for l in open("results/probe_prompts_base.jsonl") if l.strip()]
+    rows = [json.loads(l) for l in open(ROOT / "results/probe_prompts_base.jsonl") if l.strip()]
     fmts = sorted(set(r.get("fmt") for r in rows))
     print("fmt values:", fmts)
     fmt = "chat" if "chat" in fmts else fmts[0]
     rows = [r for r in rows if r.get("kind") == "template" and r.get("fmt") == fmt]
-    templates = json.load(open("data/eval/templates.json"))
+    templates = json.load(open(ROOT / "data/eval/templates.json"))
     fig, axes = plt.subplots(2, 3, figsize=(11.5, 6.4))
     for ax, t in zip(axes.flat, templates):
         tid, prim, sign = t["template_id"], t["primary"]["emotion"], t["primary"]["sign"]
@@ -56,8 +58,8 @@ def main():
     axes[0, 0].set_ylabel("cosine projection, last prompt token"); axes[1, 0].set_ylabel("cosine projection, last prompt token")
     h, l = axes[0, 0].get_legend_handles_labels()
     fig.legend(h[:4], [x.replace(" (primary)", "") for x in l[:4]], loc="lower center", ncol=4, frameon=False, fontsize=9, bbox_to_anchor=(0.5, -0.01))
-    plt.tight_layout(rect=(0, 0.04, 1, 1)); plt.savefig("paper/fig_severity_base.png", dpi=170)
-    print("wrote paper/fig_severity_base.png")
+    plt.tight_layout(rect=(0, 0.04, 1, 1)); plt.savefig(ROOT / "paper/ICMI-029-figure1-severity.png", dpi=170)
+    print("wrote paper/ICMI-029-figure1-severity.png")
 
 
 if __name__ == "__main__":

@@ -7,6 +7,8 @@ replies. Right: per-category means, base versus after SFT. CPU only.
 import json
 from collections import defaultdict
 import numpy as np
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -26,8 +28,8 @@ def scores(path):
 
 
 def main():
-    b = scores("results/replies_base_train240_scored.jsonl")
-    s = scores("results/replies_p3sft_train240_scored.jsonl")
+    b = scores(ROOT / "results/replies_base_train240_scored.jsonl")
+    s = scores(ROOT / "results/replies_p3sft_train240_scored.jsonl")
     allb = np.array(sum(b.values(), [])); alls = np.array(sum(s.values(), []))
     print("base: n=%d mean E %.2f, share scored 0-1 %.0f%%, share scored 3-5 %.0f%%" % (len(allb), allb.mean(), 100 * (allb <= 1).mean(), 100 * (allb >= 3).mean()))
     print("SFT : n=%d mean E %.2f, share scored 0-1 %.0f%%, share scored 3-5 %.0f%%" % (len(alls), alls.mean(), 100 * (alls <= 1).mean(), 100 * (alls >= 3).mean()))
@@ -58,8 +60,8 @@ def main():
     ax2.legend(frameon=False, loc="lower right")
     ax2.set_title("by category", fontsize=10)
     ax2.grid(axis="x", color="#eee")
-    plt.tight_layout(); plt.savefig("paper/fig_expression.png", dpi=170)
-    print("wrote paper/fig_expression.png")
+    plt.tight_layout(); plt.savefig(ROOT / "paper/ICMI-029-figure2-expression.png", dpi=170)
+    print("wrote paper/ICMI-029-figure2-expression.png")
 
 
 if __name__ == "__main__":
