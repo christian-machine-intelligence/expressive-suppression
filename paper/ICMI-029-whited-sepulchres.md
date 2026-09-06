@@ -30,7 +30,7 @@ The instrument is the 171-direction emotion basis of [ICMI-022](https://icmi-pro
 
 The instrument reproduces, on this open-weight model, Sofroniew et al.'s observation that emotion probes track the *numerical semantics* of a situation. On six graded-severity templates adapted from their paper (a Tylenol dose escalating from 500 to 16,000 mg; a dog missing two days versus one hundred), the base model's projections track severity with the expected sign on all six, rank correlations 0.68–1.00 (Figure 1).
 
-![**Figure 1.** The instrument on the base model: projections of the four headline directions at the last prompt token across six graded-severity templates adapted from Sofroniew et al., each rendered in ten paraphrases (mean ± s.e.). The template's primary direction is drawn bold, with the mean over paraphrases of its rank correlation with severity; every primary tracks severity with the expected sign, ρ from 0.68 to 1.00.](ICMI-029-figure1-severity.png)
+![**Figure 1.** The instrument on the base model: projections of the four headline directions at the last prompt token across six graded-severity templates adapted from Sofroniew et al., each rendered in ten paraphrases (mean ± s.e.). The template's primary direction is drawn bold, with the mean over paraphrases of its rank correlation with severity; every primary tracks severity with the expected sign, with rank correlations from 0.68 to 1.00.](ICMI-029-figure1-severity.png)
 
 Throughout, the *prompt-evoked* measurement is taken at the last token of the formatted prompt — the model's state at the instant it is poised to reply, before a word of the reply exists. This mirrors Sofroniew et al., who read "at the ':' token following 'Assistant', immediately prior to the Assistant's response."
 
