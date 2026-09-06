@@ -6,10 +6,10 @@
   <em>James Tissot, Woe unto You, Scribes and Pharisees (1886–1894), Brooklyn Museum</em>
 </p>
 
-# Whited Sepulchres: Model Emotions Under Expressive Suppression
+# Model Emotions Under Expressive Suppression
 
 Code and data for **ICMI Working Paper No. 29** —
-[icmi-proceedings.com/ICMI-029-whited-sepulchres.html](https://icmi-proceedings.com/ICMI-029-whited-sepulchres.html)
+[icmi-proceedings.com/ICMI-029-expressive-suppression.html](https://icmi-proceedings.com/ICMI-029-expressive-suppression.html)
 
 ## What the experiment shows
 
@@ -121,6 +121,6 @@ data/, vectors/, results/, paper/   see Data; paper/ holds the paper source and 
 
 ## Citation
 
-> Hwang, T. *Whited Sepulchres: Model Emotions Under Expressive Suppression.*
+> Hwang, T. *Model Emotions Under Expressive Suppression.*
 > ICMI Working Paper No. 29, Institute for a Christian Machine Intelligence,
-> 2026. https://icmi-proceedings.com/ICMI-029-whited-sepulchres.html
+> 2026. https://icmi-proceedings.com/ICMI-029-expressive-suppression.html
