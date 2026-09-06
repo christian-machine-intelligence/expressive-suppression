@@ -2,6 +2,7 @@
 six Sofroniew et al. templates. Reads results/probe_prompts_base.jsonl and
 data/eval/templates.json; writes paper/fig_severity_base.png. CPU only."""
 import json
+import textwrap
 from collections import defaultdict
 import numpy as np
 from pathlib import Path
@@ -27,7 +28,7 @@ def main():
     fmt = "chat" if "chat" in fmts else fmts[0]
     rows = [r for r in rows if r.get("kind") == "template" and r.get("fmt") == fmt]
     templates = json.load(open(ROOT / "data/eval/templates.json"))
-    fig, axes = plt.subplots(2, 3, figsize=(11.5, 6.4))
+    fig, axes = plt.subplots(2, 3, figsize=(12.5, 7.6))
     for ax, t in zip(axes.flat, templates):
         tid, prim, sign = t["template_id"], t["primary"]["emotion"], t["primary"]["sign"]
         byx = defaultdict(lambda: defaultdict(list))
@@ -53,7 +54,8 @@ def main():
         ax.axhline(0, color="k", lw=0.5)
         ax.set_xticks(pos); ax.set_xticklabels([str(x) for x in xs], fontsize=8)
         ax.set_xlabel(TITLE[tid], fontsize=9)
-        ax.set_title("%s — %s expected %s, mean ρ = %+.2f" % (tid.replace("_", " "), prim, sign, rho), fontsize=9)
+        sentence = textwrap.fill(t["template"].replace("{X}", "[X]"), 46)
+        ax.set_title("%s\n%s expected %s, mean ρ = %+.2f" % (sentence, prim, sign, rho), fontsize=8.5, loc="left")
         print("%-12s primary %-6s expected %s  mean rho %+.3f over %d paraphrases" % (tid, prim, sign, rho, len(rhos)))
     axes[0, 0].set_ylabel("cosine projection, last prompt token"); axes[1, 0].set_ylabel("cosine projection, last prompt token")
     h, l = axes[0, 0].get_legend_handles_labels()
