@@ -84,7 +84,7 @@ exactly by steps 1–2, or available on request.
 | `data/train/train_prompts.jsonl` | the 240 disclosures, 12 categories × 20, with category and severity labels |
 | `data/train/flat_corpus.jsonl` | all 960 rewrite pairs: the base model's reply, the flat rewrite, both judge scores, character-level similarity |
 | `data/train/flat_corpus_filtered.jsonl` | the 717 pairs retained for training (emotionality ≤ 1 and competence ≥ 3) |
-| `data/prompts/` | the rewrite instruction and the two single-integer judge rubrics, verbatim |
+| `data/prompts/` | the two single-integer judge rubrics and the two system prompts of the prompting conditions (flat instruction; neutral control), verbatim; the rewrite instruction is in `src/rewrite.py` and the paper's Appendix B |
 | `data/eval/templates.json`, `paraphrases.json` | the six graded-severity templates adapted from Sofroniew et al. and their ten paraphrases each (Section 2) |
 | `data/extraction/` | the frozen ICMI-022 extraction set: 171 emotions × 6 narratives, 2 held-out narratives each, and the 24 neutral prompts used for denoising |
 | `vectors/` | the 171-direction basis at layer 53, byte-identical to ICMI-022 (SHA-256 in `vectors/PROVENANCE.md`) |
