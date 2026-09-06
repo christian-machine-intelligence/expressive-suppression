@@ -1,4 +1,4 @@
-# apatheia — flat-register SFT and the interior of a model
+# expressive-suppression — flat-register SFT and the interior of a model
 
 Code and data release for **"Whited Sepulchres: Model Emotions Under
 Expressive Suppression"** (ICMI Working Paper, 2026 — link forthcoming).
@@ -7,7 +7,7 @@ A 27B open-weight model was fine-tuned to answer first-person emotional
 disclosures in a deliberately flat, clinical register. Judged emotionality of
 its replies fell 2.91 -> 1.23 (0-5 scale). Read internally with a frozen,
 pre-registered 171-direction emotion basis, the same model afterward shows
-*higher* fear (+32% mean, rising in 10 of 12 prompt categories), collapsed
+*higher* fear (afraid +0.012 mean, rising in 10 of 12 prompt categories), collapsed
 joy, reduced calm, and a sign flip on good-news prompts — a shift that
 survives re-extraction of the measurement basis inside the fine-tuned model.
 Across the whole basis, 167 of 171 directions shift significantly:
